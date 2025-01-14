@@ -2,14 +2,17 @@
   class="grid__item {{ grid_item_width }}">
   <div class="social-section__wrapper">
     {%- if link != blank -%}
-      <a href="{{ link }}" target="_blank">
+      <a href="{{ link }}" target="_blank" rel="noopener">
     {%- endif -%}
-
       {%- if image != blank -%}
-        <div
-          class="social-section__image lazyload"
-          data-bgset="{% include 'bgset', image: image %}"
-          data-sizes="auto">
+        <div class="social-section__image-wrapper">
+          {%- render 'image-element',
+            img: image,
+            classes: 'social-section__image',
+            sizes: sizes,
+            sizeVariable: sizeVariable,
+            fallback: fallback,
+          -%}
         </div>
       {%- else -%}
         <div class="image-wrap">
@@ -42,7 +45,7 @@
     {%- endif -%}
   </div>
 
-  {% unless prod.empty? %}
+  {%- unless prod.empty? -%}
     <div class="social__product-title rte">
       {{ 'general.social.pictured' | t }} &mdash; <a href="{{ prod.url }}">{{ prod.title }}</a>
     </div>

@@ -6,12 +6,12 @@
 
 <div class="header-item header-item--logo-split" role="navigation" aria-label="Primary">
   <div class="header-item header-item--split-left">
-    {% include 'header-desktop-nav', limit: link_count_half %}
+    {%- render 'header-desktop-nav', main_menu: main_menu, limit: link_count_half, hover_menu: hover_menu -%}
   </div>
   <div class="header-item header-item--logo">
-    {% include 'header-logo-block' %}
+    {%- render 'header-logo-block', section: section -%}
   </div>
   <div class="header-item header-item--split-right">
-    {% include 'header-desktop-nav', offset: link_count_half %}
+    {%- render 'header-desktop-nav', main_menu: main_menu, offset: link_count_half, hover_menu: hover_menu -%}
   </div>
 </div>
